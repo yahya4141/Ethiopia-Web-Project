@@ -1,0 +1,203 @@
+﻿@model InternetProg.Models.Kullanici
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap - Etiyopya</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="icon" type="image/png" href="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f981.png">
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden !important;
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+        }
+
+
+        #split-left {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 65%;
+            height: 100%;
+            background-image: url('https://media.istockphoto.com/id/638817830/tr/foto%C4%9Fraf/african-man-collecting-coffee-cherries-east-africa.jpg?s=612x612&w=0&k=20&c=vrXpytflQsEC3Q6_q0QIyCSKix12J4uCPG2U3ZELBcg=');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+            #split-left::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(to bottom, rgba(26, 77, 46, 0.3), rgba(0, 0, 0, 0.6));
+            }
+
+
+        .left-content {
+            position: absolute;
+            bottom: 40px;
+            left: 50px;
+            z-index: 2;
+            color: white;
+        }
+
+
+        #split-right {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 35%;
+            height: 100%;
+            background-color: white;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .login-box {
+            width: 85%;
+            max-width: 420px;
+            padding: 20px;
+        }
+
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: #1a4d2e;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 12px;
+            border: 2px solid #eee;
+            background-color: #fdfbf7;
+        }
+
+            .form-control:focus {
+                border-color: #FEDD00;
+                box-shadow: none;
+                background-color: #fff;
+            }
+
+        .btn-ethiopia {
+            background-color: #1a4d2e;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+            .btn-ethiopia:hover {
+                background-color: #FEDD00;
+                color: #1a4d2e;
+            }
+
+        /* MOBİL UYUMU */
+        @@media (max-width: 992px) {
+            body, html {
+                overflow: auto !important;
+            }
+
+            #split-left {
+                position: relative;
+                width: 100%;
+                height: 250px;
+            }
+
+            #split-right {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 40px 0;
+            }
+
+            .left-content {
+                bottom: 20px;
+                left: 20px;
+            }
+
+                .left-content h2 {
+                    font-size: 1.8rem;
+                }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="split-left">
+        <div class="left-content">
+            <h2 class="fw-bold display-5" style="font-family: 'Playfair Display', serif; color: #FEDD00;">Keşfedilmeyi Bekleyen<br>Bir Tarih.</h2>
+            <p class="lead mb-0">Etiyopya'nın kalbine yolculuk burada başlıyor.</p>
+        </div>
+    </div>
+
+    <div id="split-right">
+        <div class="login-box">
+
+            <div class="text-center mb-4">
+                <i class="bi bi-person-circle" style="font-size: 3.5rem; color: #d94f30;"></i>
+                <h3 class="mt-2 fw-bold">Tekrar Hoşgeldiniz</h3>
+                <p class="text-muted small">Lütfen bilgilerinizi giriniz.</p>
+            </div>
+
+            @if (ViewBag.Hata != null)
+            {
+                <div class="alert alert-danger border-0 shadow-sm mb-4">
+                    <i class="bi bi-exclamation-circle-fill me-2"></i> @ViewBag.Hata
+                </div>
+            }
+
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label class="form-label text-muted small fw-bold">E-POSTA ADRESİ</label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "ornek@email.com", required = "required", type = "email" })
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label text-muted small fw-bold">ŞİFRE</label>
+                    @Html.PasswordFor(x => x.Sifre, new { @class = "form-control", placeholder = "******", required = "required" })
+                </div>
+
+                <button class="btn btn-ethiopia w-100 mb-3">GİRİŞ YAP</button>
+            }
+
+            <div class="text-center mt-4">
+                <p class="small text-muted mb-4">
+                    Hesabın yok mu? <a href="/Account/Register" class="text-danger fw-bold text-decoration-none">Hemen Kayıt Ol</a>
+                </p>
+                <a href="/Home/Index" class="text-muted small text-decoration-none border-top pt-3 d-block">
+                    <i class="bi bi-arrow-left"></i> Ana Sayfaya Dön
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

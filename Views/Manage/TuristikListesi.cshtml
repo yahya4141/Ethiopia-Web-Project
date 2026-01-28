@@ -1,0 +1,36 @@
+﻿@model List<InternetProg.Models.TuristikYer>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Turistik Yerler</h3>
+<hr />
+<a href="/Manage/TuristikEkle" class="btn btn-primary mb-3">Yeni Yer Ekle</a>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Yer Adı</th>
+            <th>Açıklama</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.YerAdi</td>
+                <td>
+                    @if (item.Aciklama.Length > 50)
+                    {@item.Aciklama.Substring(0, 50) <text>...</text> }
+                else
+                { @item.Aciklama}
+                </td>
+                <td>
+                    <a href="/Manage/TuristikDuzenle/@item.Id" class="btn btn-warning btn-sm">Düzenle</a>
+                    <a href="/Manage/TuristikSil/@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('Silinsin mi?')">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

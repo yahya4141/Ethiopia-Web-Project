@@ -1,0 +1,53 @@
+﻿@model InternetProg.Models.Sehir
+@{
+    ViewBag.Title = "Şehir Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">🏙️ Yeni Şehir Ekle</h4>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("SehirEkle", "Manage", FormMethod.Post))
+                {
+                    <div class="row">
+                       <div class="col-md-6 mb-3">
+                           <label class="form-label fw-bold">Şehir Adı</label>
+
+                           @Html.TextBoxFor(x => x.SehirAdi, new { @class = "form-control", required = "required", placeholder = "Örn: Addis Ababa" })
+
+                           @Html.ValidationMessageFor(x => x.SehirAdi, "", new { @class = "text-danger" })
+                       </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Nüfus</label>
+                            @Html.TextBoxFor(x => x.Nufus, new { @class = "form-control", placeholder = "Örn: 3.4 Milyon" })
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Öne Çıkan Özellik (Etiket)</label>
+                        @Html.TextBoxFor(x => x.OneCikan, new { @class = "form-control", placeholder = "Örn: Tarihi Kiliseler, Kahve Üretimi..." })
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Resim URL</label>
+                        @Html.TextBoxFor(x => x.ResimUrl, new { @class = "form-control", required = "required", placeholder = "https://..." })
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Detaylı Bilgi</label>
+                        @Html.TextAreaFor(x => x.Bilgi, new { @class = "form-control", rows = "5", required = "required" })
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success text-white">💾 Kaydet</button>
+                        <a href="/Manage/SehirListesi" class="btn btn-secondary">İptal</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Yönetim Paneli</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f981.png">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .wrapper {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            min-width: 250px;
+            background: #212529;
+            color: white;
+            padding: 20px;
+        }
+
+            .sidebar a {
+                color: #adb5bd;
+                text-decoration: none;
+                display: block;
+                padding: 12px;
+                border-bottom: 1px solid #343a40;
+            }
+
+                .sidebar a:hover {
+                    background: #343a40;
+                    color: white;
+                    padding-left: 20px;
+                    transition: 0.3s;
+                }
+
+        .content {
+            flex: 1;
+            padding: 30px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark px-3 border-bottom border-secondary">
+        <span class="navbar-brand mb-0 h1">Admin Paneli</span>
+        <div>
+            <a href="/Home/Index" class="btn btn-outline-light btn-sm me-2">Siteye Git</a>
+            <a href="/Account/Logout" class="btn btn-danger btn-sm">Çıkış</a>
+        </div>
+    </nav>
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <h5 class="text-white mb-4">Menü</h5>
+            <a href="/Manage/Kullanicilar">👤 Kullanıcı Yönetimi</a> <a href="/Manage/SliderListesi">🖼️ Slider Yönetimi</a>
+            <a href="/Manage/SehirListesi">🏙️ Şehir Yönetimi</a>
+            <a href="/Manage/NufusListesi">👥 Nüfus Bilgileri</a>
+            <a href="/Manage/TuristikListesi">🏰 Turistik Yerler</a>
+        </div>
+
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

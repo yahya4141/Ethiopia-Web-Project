@@ -1,0 +1,30 @@
+﻿@model InternetProg.Models.NufusBilgi
+@{
+    ViewBag.Title = "Nüfus Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card shadow col-md-6 mx-auto">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">Yeni Nüfus Verisi Ekle</h4>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("NufusEkle", "Manage", FormMethod.Post))
+        {
+            <div class="mb-3">
+                <label class="form-label fw-bold">Yıl</label>
+                @Html.TextBoxFor(x => x.Yil, new { @class = "form-control", type = "number", placeholder = "Örn: 2024", required = "required" })
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Nüfus Sayısı</label>
+                @Html.TextBoxFor(x => x.NufusSayisi, new { @class = "form-control", placeholder = "Örn: 120 Milyon", required = "required" })
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success">Kaydet</button>
+                <a href="/Manage/NufusListesi" class="btn btn-secondary">İptal</a>
+            </div>
+        }
+    </div>
+</div>

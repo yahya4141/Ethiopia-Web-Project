@@ -1,0 +1,22 @@
+﻿@model InternetProg.Models.SliderResim
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Yeni Slider Resmi Ekle</h3>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("SliderEkle", "Manage", FormMethod.Post))
+        {
+            <div class="mb-3">
+                <label>Resim URL (İnternetten bir resim linki yapıştırın)</label>
+                @Html.TextBoxFor(m => m.ResimUrl, new { @class = "form-control", required = "required", placeholder = "https://..." })
+            </div>
+
+            <button type="submit" class="btn btn-success">Ekle</button>
+            <a href="/Manage/SliderListesi" class="btn btn-secondary">İptal</a>
+        }
+    </div>
+</div>
