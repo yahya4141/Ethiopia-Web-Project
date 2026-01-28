@@ -21,12 +21,6 @@
 3. Open the **`Web.config`** file and update the **Connection String** according to your local SQL Server instance.
 4. Build and run the project using Visual Studio.
 
-### Features
-* **Admin Panel:** Full CRUD operations for content management.
-* **Blog System:** Dynamic articles about Ethiopia.
-* **Gallery:** Image showcase managed via admin.
-* **Contact:** Functional contact form for user feedback.
-
 ---
 
 <a name="türkçe"></a>
@@ -46,8 +40,3 @@
 3. **`Web.config`** dosyasındaki **Connection String** bilgisini kendi yerel SQL Server ayarlarınıza göre güncelleyin.
 4. Projeyi Visual Studio üzerinden derleyip çalıştırın.
 
-### Proje Özellikleri
-* **Yönetici Paneli:** İçerik yönetimi için ekleme, silme ve güncelleme işlemleri.
-* **Blog Sistemi:** Etiyopya hakkında dinamik makaleler.
-* **Galeri:** Yönetici paneli üzerinden yönetilebilen görsel galeri.
-* **İletişim:** Kullanıcı geri bildirimleri için iletişim formu.
